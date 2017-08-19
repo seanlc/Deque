@@ -8,4 +8,4 @@ Deque.h.gch: Deque.h
 clean:
 	rm -f main Deque.h.gch
 valgrind:
-	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --track-origins=yes main
+	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --track-origins=yes ./main

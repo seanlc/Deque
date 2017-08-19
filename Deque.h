@@ -8,10 +8,28 @@ struct Node
 class Deque
 {
   public:
-    Deque();
-    ~Deque();
-    bool isEmpty();
-    void makeEmpty();
+    Deque()
+    : front (nullptr), back (nullptr), numNodes (0)
+    {}
+    ~Deque()
+    {
+        makeEmpty();
+    }
+    bool isEmpty()
+    {
+        return numNodes == 0;
+    }
+    void makeEmpty()
+    {
+        Node * trav = nullptr;
+	while(front != nullptr)
+	{
+	    trav = front;
+	    front = front->next;
+	    delete trav;
+	}
+	numNodes = 0;
+    }
     void push_back(int n);
     void push_front(int n);
     int pop_back();
