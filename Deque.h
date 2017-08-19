@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 struct Node
 {
   int data;
@@ -31,12 +35,28 @@ class Deque
 	numNodes = 0;
     }
     void push_back(int n);
-    void push_front(int n);
+    void push_front(int n)
+    {
+        Node * newNode = new Node;
+	newNode->data = n;
+	newNode->next = front;
+	if(front != nullptr)
+	    front->last = newNode;
+	front = newNode;
+    }
     int pop_back();
     int pop_front();
     int peek_back();
     int peek_front();
-    void print();
+    void print()
+    {
+        Node * trav = front;
+	while(trav != nullptr)
+	{
+	    cout << "node with val " << trav->data << endl;
+	    trav = trav->next;
+	}
+    }
     void revPrint();
   private:
     Node * front;
