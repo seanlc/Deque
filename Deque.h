@@ -43,6 +43,8 @@ class Deque
 	if(front != nullptr)
 	    front->last = newNode;
 	front = newNode;
+	if(back == nullptr)
+	    back = newNode;
     }
     int pop_back();
     int pop_front();
@@ -57,7 +59,15 @@ class Deque
 	    trav = trav->next;
 	}
     }
-    void revPrint();
+    void revPrint()
+    {
+        Node * trav = back;
+	while(trav != nullptr)
+	{
+	    cout << "node with val " << trav->data << endl;
+	    trav = trav->last;
+	}
+    }
   private:
     Node * front;
     Node * back;
