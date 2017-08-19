@@ -34,17 +34,29 @@ class Deque
 	}
 	numNodes = 0;
     }
-    void push_back(int n);
+    void push_back(int n)
+    {
+        Node * newNode = new Node;
+	newNode-> data = n;
+	newNode->next = nullptr;
+	newNode->last = back;
+	if(front == nullptr && back == nullptr)
+	    front = newNode;
+	else
+	    back->next = newNode;
+	back = newNode;
+    }
     void push_front(int n)
     {
         Node * newNode = new Node;
 	newNode->data = n;
 	newNode->next = front;
-	if(front != nullptr)
+	newNode->last = nullptr;
+	if(front == nullptr && back == nullptr)
+	    back = newNode;
+	else
 	    front->last = newNode;
 	front = newNode;
-	if(back == nullptr)
-	    back = newNode;
     }
     int pop_back();
     int pop_front();

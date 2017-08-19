@@ -19,9 +19,21 @@ void test_push_front()
     myDeque.revPrint();
 }
 
+void test_push_back()
+{
+    Deque myDeque;
+    for(int i = 0; i < 100; ++i)
+	myDeque.push_back(i);
+    cout << "in order print" << endl;
+    myDeque.print();
+    cout << "reverse print" << endl;
+    myDeque.revPrint();
+}
+
 int main()
 {
 //    test_ctor_dtor();
-    test_push_front();
+//    test_push_front();
+    test_push_back();
     return 0;
 }
