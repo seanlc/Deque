@@ -58,7 +58,16 @@ class Deque
 	    front->last = newNode;
 	front = newNode;
     }
-    int pop_back();
+    int pop_back()
+    {
+	Node * tmp = back;
+        int returnVal = back->data;
+	back = back->last;
+	back->next = nullptr;
+	delete tmp;
+	--numNodes;
+	return returnVal;
+    }
     int pop_front();
     int peek_back();
     int peek_front();
