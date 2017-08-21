@@ -70,7 +70,16 @@ class Deque
 	--numNodes;
 	return returnVal;
     }
-    int pop_front();
+    int pop_front()
+    {
+        Node * tmp = front;
+	int returnVal = tmp->data;
+	front = front->next;
+	front->last = nullptr;
+	delete tmp;
+	--numNodes;
+	return returnVal;
+    }
     int peek_back()
     {
 	if (! isEmpty() )
@@ -78,7 +87,13 @@ class Deque
 	cout << "deque is empty " << endl;
 	return -1;
     }
-    int peek_front();
+    int peek_front()
+    {
+        if(! isEmpty())
+	    return front->data;
+	cout << "deque is empty " << endl;
+	return -1;
+    }
     void print()
     {
         Node * trav = front;
