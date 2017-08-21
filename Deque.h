@@ -45,6 +45,7 @@ class Deque
 	else
 	    back->next = newNode;
 	back = newNode;
+	++numNodes;
     }
     void push_front(int n)
     {
@@ -57,6 +58,7 @@ class Deque
 	else
 	    front->last = newNode;
 	front = newNode;
+	++numNodes;
     }
     int pop_back()
     {
@@ -69,7 +71,13 @@ class Deque
 	return returnVal;
     }
     int pop_front();
-    int peek_back();
+    int peek_back()
+    {
+	if (! isEmpty() )
+            return back->data;
+	cout << "deque is empty " << endl;
+	return -1;
+    }
     int peek_front();
     void print()
     {
